@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Cưới | Thanh Xuân & Chí Thành</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-cream: #fbf9f4;
+      --card-bg: #ffffff;
+      --primary-moss: #2b4736;
+      --secondary-green: #446850;
+      --gold-accent: #c49d62;
+      --text-dark: #2a2a2a;
+      --text-muted: #666666;
+      --border-color: #e5dfd3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #eee9df;
+      color: var(--text-dark);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wedding-wrapper {
+      width: 100%;
+      max-width: 500px;
+      background-color: var(--bg-cream);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+    }
+
+    /* Nút bật/tắt nhạc nền */
+    .music-player {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      cursor: pointer;
+      color: var(--primary-moss);
+      font-size: 18px;
+    }
+    .music-spin {
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Section Styling */
+    section {
+      padding: 40px 22px;
+      text-align: center;
+      position: relative;
+    }
+
+    .monogram {
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 15px;
+      border: 1px solid var(--gold-accent);
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .monogram span {
+      transform: rotate(-45deg);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--primary-moss);
+      letter-spacing: 2px;
+    }
+
+    h1.couple-names {
+      font-family: 'Alex Brush', cursive;
+      font-size: 46px;
+      color: var(--primary-moss);
+      margin: 8px 0;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .sub-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--primary-moss);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .section-heading::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 1.5px;
+      background: var(--gold-accent);
+      margin: 8px auto 0;
+    }
+
+    /* Ảnh 1: Khung vòm hoa đầu trang */
+    .photo-arch {
+      width: 100%;
+      height: 420px;
+      border-radius: 220px 220px 10px 10px;
+      overflow: hidden;
+      margin: 15px 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border: 3px solid #ffffff;
+      background-color: #fff;
+    }
+    .photo-arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Ảnh 2: Khung thiệp phần lời mời */
+    .photo-frame {
+      width: 100%;
+      height: 340px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border: 3px solid #fff;
+      margin: 18px 0;
+      background-color: #fff;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Ảnh 3: Thu nhỏ khung và lấy từ trên đỉnh để không bị mất đầu */
+    .photo-card-compact {
+      width: 82%;
+      max-width: 320px;
+      height: 380px;
+      margin: 25px auto 10px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border: 3px solid #fff;
+      background-color: #fff;
+    }
+    .photo-card-compact img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    /* Đếm ngược */
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 25px 0 10px;
+    }
+    .countdown-box {
+      background: #ffffff;
+      padding: 12px 10px;
+      border-radius: 8px;
+      min-width: 65px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-color);
+    }
+    .countdown-box .number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--primary-moss);
+    }
+    .countdown-box .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* Card Lời mời & Gia đình */
+    .invitation-card {
+      background: #ffffff;
+      padding: 28px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    }
+    .parents-grid {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      text-align: center;
+      gap: 10px;
+    }
+    .parent-column {
+      flex: 1;
+    }
+    .parent-column h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--gold-accent);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .parent-column p {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    .venue-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--primary-moss);
+      letter-spacing: 1.5px;
+      margin-top: 22px;
+      text-transform: uppercase;
+    }
+    .venue-date {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--gold-accent);
+      margin: 6px 0;
+    }
+    .venue-address {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Agenda Timeline */
+    .timeline {
+      position: relative;
+      margin: 25px auto 10px;
+      padding-left: 15px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      bottom: 15px;
+      left: 33px;
+      width: 1.5px;
+      background: var(--gold-accent);
+    }
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 26px;
+      position: relative;
+      text-align: left;
+    }
+    .timeline-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-cream);
+      border: 1.5px solid var(--gold-accent);
+      color: var(--primary-moss);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .timeline-content {
+      padding-left: 20px;
+    }
+    .timeline-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary-moss);
+    }
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Buttons */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--primary-moss);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(43,71,54,0.25);
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      margin-top: 15px;
+    }
+    .btn-action:hover {
+      background-color: var(--secondary-green);
+    }
+
+    /* Lời chúc & RSVP */
+    .wishes-box {
+      background: #fff;
+      padding: 25px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: var(--primary-moss);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--gold-accent);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="music-player" id="musicToggle" title="Bật/Tắt nhạc">
+    <i class="fa-solid fa-music"></i>
+  </div>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/bao-hy.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="wedding-wrapper">
+
+    <section>
+      <div class="monogram">
+        <span>XT</span>
+      </div>
+      <h1 class="couple-names">Thanh Xuân<br>& Chí Thành</h1>
+      <div class="sub-title">HÔN LỄ</div>
+
+      <div class="photo-arch">
+        <img src="assets/HLE01617.jpg" alt="Thanh Xuân & Chí Thành" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=800'">
+      </div>
+
+      <p style="font-style: italic; font-size: 13.5px; color: var(--text-muted); margin-top: 15px;">
+        "Tình yêu không phải là nhìn về nhau, mà là cùng nhau nhìn về một hướng."
+      </p>
+
+      <div class="countdown-container">
+        <div class="countdown-box">
+          <div class="number" id="days">00</div>
+          <div class="label">Ngày</div>
+        </div>
+        <div class="countdown-box">
+          <div class="number" id="hours">00</div>
+          <div class="label">Giờ</div>
+        </div>
+        <div class="countdown-box">
+          <div class="number" id="minutes">00</div>
+          <div class="label">Phút</div>
+        </div>
+        <div class="countdown-box">
+          <div class="number" id="seconds">00</div>
+          <div class="label">Giây</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background-color: #f6f3eb;">
+      <div class="section-heading">TRÂN TRỌNG KÍNH MỜI</div>
+
+      <div class="invitation-card">
+        <div class="parents-grid">
+          <div class="parent-column">
+            <h4>Nhà Trai</h4>
+            <p><strong>ÔNG BÀ</strong><br>NGUYỄN VĂN QUYỀN<br>&<br>NGUYỄN THỊ THANH HƯƠNG<br><span style="font-size: 11px; color:#777;">Phường An Tịnh, Tây Ninh</span></p>
+          </div>
+          <div class="parent-column">
+            <h4>Nhà Gái</h4>
+            <p><strong>ÔNG BÀ</strong><br>PHẠM VIẾT YÊN<br>&<br>PHẠM THỊ PHƯƠNG<br><span style="font-size: 11px; color:#777;">Xã Đắk Mil, Lâm Đồng</span></p>
+          </div>
+        </div>
+
+        <div class="photo-frame">
+          <img src="assets/HLE01037.jpg" alt="Khoảnh khắc hạnh phúc" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800'">
+        </div>
+
+        <p style="font-size: 13.5px; margin-top: 15px; color: var(--text-dark);">
+          Kính mời Quý khách đến chung vui cùng gia đình chúng tôi tại buổi tiệc thành hôn:
+        </p>
+
+        <div class="venue-title">TÂN SƠN NHẤT PAVILLON</div>
+        <div class="venue-date">Thứ Bảy, 14 . 11 . 2026</div>
+        <div style="font-size: 12.5px; color: var(--gold-accent); margin-bottom: 8px;">(Nhằm ngày 06 tháng Bính Ngọ)</div>
+        <div class="venue-address">
+          <strong>Sảnh Titan - Tầng 3</strong><br>
+          202 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh
+        </div>
+
+        <a href="https://maps.google.com/?q=Tan+Son+Nhat+Pavillon+202+Hoang+Van+Thu+Phu+Nhuan" target="_blank" class="btn-action">
+          <i class="fa-solid fa-location-dot"></i> Xem Chỉ Đường Google Maps
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">AGENDA TIỆC CƯỚI</div>
+      <p style="font-size: 13px; color: var(--text-muted);">14.11.2026</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-camera"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">18:00</div>
+            <div class="timeline-desc">Đón khách & Chụp ảnh lưu niệm</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-ring"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">19:00</div>
+            <div class="timeline-desc">Nghi lễ thành hôn</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">19:30</div>
+            <div class="timeline-desc">Khai tiệc & Chúc rượu</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-music"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">20:00</div>
+            <div class="timeline-desc">Âm nhạc & Minigame gắn kết</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-card-compact">
+        <img src="assets/HLE02097.jpg" alt="Cùng nhau trọn đời" onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800'">
+      </div>
+    </section>
+
+    <section style="background-color: #f6f3eb; padding-bottom: 50px;">
+      <div class="section-heading">GỬI LỜI CHÚC & RSVP</div>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+        Sự hiện diện của quý khách là niềm vinh hạnh to lớn đối với gia đình chúng tôi!
+      </p>
+
+      <div class="wishes-box">
+        <form id="rsvpForm" onsubmit="handleRSVP(event)">
+          <div class="form-group">
+            <label>Họ và Tên khách quý</label>
+            <input type="text" id="guestName" placeholder="Nhập tên của bạn" required />
+          </div>
+
+          <div class="form-group">
+            <label>Bạn sẽ tham dự chứ?</label>
+            <select id="guestAttend">
+              <option value="yes">Chắc chắn tôi sẽ tham dự</option>
+              <option value="maybe">Tôi đang sắp xếp thời gian</option>
+              <option value="no">Tiếc quá, tôi không thể đến dự</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Lời chúc gửi đến Cô dâu & Chú rể</label>
+            <textarea id="guestWish" rows="3" placeholder="Gửi gắm lời chúc ngọt ngào nhất..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-action" style="margin-top: 8px;">
+            <i class="fa-solid fa-paper-plane"></i> Gửi Xác Nhận & Lời Chúc
+          </button>
+        </form>
+        <div id="rsvpAlert" style="display:none; color: var(--primary-moss); font-size:13.5px; text-align:center; margin-top:12px; font-weight:600;">
+          ❤️ Cảm ơn bạn rất nhiều! Lời chúc đã được ghi nhận.
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // 1. Đếm ngược đến ngày cưới 14/11/2026 18:00
+    const targetDate = new Date("2026-11-14T18:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance > 0) {
+        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+        document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+        document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+        document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // 2. Nhạc nền
+    const musicBtn = document.getElementById("musicToggle");
+    const audio = document.getElementById("bgMusic");
+    let isPlaying = false;
+
+    musicBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.classList.remove("music-spin");
+      } else {
+        audio.play().catch(e => console.log(e));
+        musicBtn.classList.add("music-spin");
+      }
+      isPlaying = !isPlaying;
+    });
+
+    document.body.addEventListener('click', function initPlay() {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          musicBtn.classList.add("music-spin");
+        }).catch(() => {});
+      }
+    }, { once: true });
+
+    // 3. Form RSVP
+    function handleRSVP(e) {
+      e.preventDefault();
+      document.getElementById("rsvpAlert").style.display = "block";
+      document.getElementById("rsvpForm").reset();
+    }
+  </script>
+</body>
+</html>
