@@ -379,10 +379,104 @@
       font-size: 13px;
       outline: none;
     }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--gold-accent);
+    /* Khối Lịch Ngày Cưới (Save The Date Calendar) */
+    .calendar-container {
+      max-width: 360px;
+      margin: 25px auto 10px;
+      background: #ffffff;
+      border: 1px solid rgba(196, 157, 98, 0.4);
+      border-radius: 16px;
+      padding: 24px 20px 20px;
+      box-shadow: 0 6px 22px rgba(43, 71, 54, 0.05);
+      position: relative;
+    }
+    .calendar-sub {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .calendar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-moss);
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      padding: 10px 0;
+      border-top: 1px solid rgba(196, 157, 98, 0.3);
+      border-bottom: 1.5px solid var(--gold-accent);
+    }
+    .calendar-weekdays span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-moss);
+      text-align: center;
+    }
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      row-gap: 8px;
+      margin-top: 14px;
+    }
+    .cal-day {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      font-feature-settings: "lnum" 1, "tnum" 1;
+      color: var(--text-dark);
+      position: relative;
+    }
+    .cal-day.empty {
+      visibility: hidden;
+    }
+    .cal-heart-day {
+      position: relative;
+    }
+    .cal-heart-day .heart-icon {
+      position: absolute;
+      width: 35px;
+      height: 33px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 2px 5px rgba(196, 157, 98, 0.35));
+    }
+    .cal-heart-day .heart-num {
+      position: relative;
+      z-index: 2;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+      margin-top: -1px;
+    }
+    .calendar-note {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+    .calendar-note i {
+      color: var(--gold-accent);
     }
   </style>
 </head>
@@ -421,6 +515,82 @@
       <p style="font-style: italic; font-size: 13.5px; color: var(--text-muted); margin-top: 15px; margin-bottom: 5px;">
         "Tình yêu không phải là nhìn về nhau, mà là cùng nhau nhìn về một hướng."
       </p>
+
+      <!-- Khối Lịch Ngày Cưới (Save The Date) -->
+      <div class="calendar-container">
+        <div class="calendar-sub">SAVE THE DATE</div>
+        <div class="calendar-title">Tháng 11 / 2026</div>
+
+        <div class="calendar-weekdays">
+          <span>T2</span>
+          <span>T3</span>
+          <span>T4</span>
+          <span>T5</span>
+          <span>T6</span>
+          <span>T7</span>
+          <span>CN</span>
+        </div>
+
+        <div class="calendar-days">
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day">1</div>
+
+          <div class="cal-day">2</div>
+          <div class="cal-day">3</div>
+          <div class="cal-day">4</div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+
+          <div class="cal-day">9</div>
+          <div class="cal-day">10</div>
+          <div class="cal-day">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day cal-heart-day" title="Ngày cưới: 14.11.2026">
+            <svg class="heart-icon" viewBox="0 0 34 32" aria-hidden="true">
+              <path d="M17 29.5 C17 29.5 2.5 20.5 2.5 11 C2.5 5.8 6.5 2 11.5 2 C14.6 2 16.2 3.8 17 4.7 C17.8 3.8 19.4 2 22.5 2 C27.5 2 31.5 5.8 31.5 11 C31.5 20.5 17 29.5 17 29.5 Z" fill="var(--gold-accent)" />
+            </svg>
+            <span class="heart-num">14</span>
+          </div>
+          <div class="cal-day">15</div>
+
+          <div class="cal-day">16</div>
+          <div class="cal-day">17</div>
+          <div class="cal-day">18</div>
+          <div class="cal-day">19</div>
+          <div class="cal-day">20</div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+
+          <div class="cal-day">23</div>
+          <div class="cal-day">24</div>
+          <div class="cal-day">25</div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+
+          <div class="cal-day">30</div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+        </div>
+
+        <div class="calendar-note">
+          <i class="fa-solid fa-champagne-glasses"></i>
+          <span>Thứ Bảy, ngày 14 tháng 11 năm 2026</span>
+        </div>
+      </div>
     </section>
 
     <section style="background-color: #f6f3eb;">
