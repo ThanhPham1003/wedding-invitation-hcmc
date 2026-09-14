@@ -83,22 +83,17 @@
     }
 
     .monogram {
-      width: 55px;
-      height: 55px;
+      width: 72px;
+      height: 72px;
       margin: 0 auto 15px;
-      border: 1px solid var(--gold-accent);
-      transform: rotate(45deg);
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .monogram span {
-      transform: rotate(-45deg);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      font-weight: 700;
-      color: var(--primary-moss);
-      letter-spacing: 2px;
+    .monogram-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
     }
 
     h1.couple-names {
@@ -193,32 +188,38 @@
       object-position: top center;
     }
 
-    /* Đếm ngược */
-    .countdown-container {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 25px 0 10px;
-    }
-    .countdown-box {
-      background: #ffffff;
-      padding: 12px 10px;
-      border-radius: 8px;
-      min-width: 65px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    /* Google Map Preview */
+    .map-preview-wrapper {
+      margin-top: 14px;
+      border-radius: 12px;
+      overflow: hidden;
       border: 1px solid var(--border-color);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      background-color: #fff;
     }
-    .countdown-box .number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 700;
+    .map-preview-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 250px;
+      border: 0;
+    }
+    .map-footer-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 12px;
+      background: #fdfbf7;
+      border-top: 1px solid var(--border-color);
+      font-size: 12px;
       color: var(--primary-moss);
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
-    .countdown-box .label {
-      font-size: 11px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      letter-spacing: 1px;
+    .map-footer-hint:hover {
+      background: #f5eedf;
+      color: var(--secondary-green);
     }
 
     /* Card Lời mời & Gia đình */
@@ -390,45 +391,36 @@
   <div class="music-player" id="musicToggle" title="Bật/Tắt nhạc">
     <i class="fa-solid fa-music"></i>
   </div>
-  <audio id="bgMusic" loop preload="auto">
-    <source src="assets/bao-hy.mp3" type="audio/mp3">
+  <audio id="bgMusic" loop preload="auto" autoplay playsinline>
+    <source src="assets/nhac-cuoi.mp3" type="audio/mp3">
   </audio>
 
   <div class="wedding-wrapper">
 
     <section>
       <div class="monogram">
-        <span>XT</span>
+        <svg viewBox="0 0 100 100" class="monogram-svg" aria-label="X|T Monogram">
+          <!-- Hình thoi (Diamond) -->
+          <polygon points="50,6 94,50 50,94 6,50" fill="none" stroke="var(--gold-accent)" stroke-width="1.3" stroke-linejoin="round" />
+          <!-- Hình tròn ở giữa (Circle) -->
+          <circle cx="50" cy="50" r="35.5" fill="none" stroke="var(--gold-accent)" stroke-width="1.3" />
+          <!-- Vạch đứng ngăn cách -->
+          <line x1="50" y1="33" x2="50" y2="67" stroke="var(--gold-accent)" stroke-width="1" />
+          <!-- Chữ X và T -->
+          <text x="35" y="50" font-family="'Cormorant Garamond', serif" font-size="20" font-weight="600" fill="var(--gold-accent)" text-anchor="middle" dominant-baseline="central">X</text>
+          <text x="65" y="50" font-family="'Cormorant Garamond', serif" font-size="20" font-weight="600" fill="var(--gold-accent)" text-anchor="middle" dominant-baseline="central">T</text>
+        </svg>
       </div>
       <h1 class="couple-names">Thanh Xuân<br>& Chí Thành</h1>
       <div class="sub-title">HÔN LỄ</div>
 
       <div class="photo-arch">
-        <img src="assets/HLE01617.jpg" alt="Thanh Xuân & Chí Thành" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=800'">
+        <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE01617-20260914T031954-c094db6cc0.jpg" alt="Thanh Xuân & Chí Thành" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=800'">
       </div>
 
-      <p style="font-style: italic; font-size: 13.5px; color: var(--text-muted); margin-top: 15px;">
+      <p style="font-style: italic; font-size: 13.5px; color: var(--text-muted); margin-top: 15px; margin-bottom: 5px;">
         "Tình yêu không phải là nhìn về nhau, mà là cùng nhau nhìn về một hướng."
       </p>
-
-      <div class="countdown-container">
-        <div class="countdown-box">
-          <div class="number" id="days">00</div>
-          <div class="label">Ngày</div>
-        </div>
-        <div class="countdown-box">
-          <div class="number" id="hours">00</div>
-          <div class="label">Giờ</div>
-        </div>
-        <div class="countdown-box">
-          <div class="number" id="minutes">00</div>
-          <div class="label">Phút</div>
-        </div>
-        <div class="countdown-box">
-          <div class="number" id="seconds">00</div>
-          <div class="label">Giây</div>
-        </div>
-      </div>
     </section>
 
     <section style="background-color: #f6f3eb;">
@@ -438,16 +430,16 @@
         <div class="parents-grid">
           <div class="parent-column">
             <h4>Nhà Trai</h4>
-            <p><strong>ÔNG BÀ</strong><br>NGUYỄN VĂN QUYỀN<br>&<br>NGUYỄN THỊ THANH HƯƠNG<br><span style="font-size: 11px; color:#777;">Phường An Tịnh, Tây Ninh</span></p>
+            <p><strong>ÔNG BÀ</strong><br>NGUYỄN VĂN QUYỀN<br>&<br>NGUYỄN THỊ THANH HƯƠNG<br><span style="font-size: 11px; color:#777;">Phường An Nhơn, TP.HCM</span></p>
           </div>
           <div class="parent-column">
             <h4>Nhà Gái</h4>
-            <p><strong>ÔNG BÀ</strong><br>PHẠM VIẾT YÊN<br>&<br>PHẠM THỊ PHƯƠNG<br><span style="font-size: 11px; color:#777;">Xã Đắk Mil, Lâm Đồng</span></p>
+            <p><strong>ÔNG BÀ</strong><br>PHẠM VIẾT YÊN<br>&<br>NGUYỄN THỊ PHƯƠNG<br><span style="font-size: 11px; color:#777;">Xã Đắk Mil, Lâm Đồng</span></p>
           </div>
         </div>
 
         <div class="photo-frame">
-          <img src="assets/HLE01037.jpg" alt="Khoảnh khắc hạnh phúc" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800'">
+          <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE01037-20260914T031451-466ccff5e5.jpg" alt="Khoảnh khắc hạnh phúc" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800'">
         </div>
 
         <p style="font-size: 13.5px; margin-top: 15px; color: var(--text-dark);">
@@ -456,15 +448,28 @@
 
         <div class="venue-title">TÂN SƠN NHẤT PAVILLON</div>
         <div class="venue-date">Thứ Bảy, 14 . 11 . 2026</div>
-        <div style="font-size: 12.5px; color: var(--gold-accent); margin-bottom: 8px;">(Nhằm ngày 06 tháng Bính Ngọ)</div>
+        <div style="font-size: 12.5px; color: var(--gold-accent); margin-bottom: 8px;">(Nhằm ngày 06 tháng 10 năm Bính Ngọ)</div>
         <div class="venue-address">
           <strong>Sảnh Titan - Tầng 3</strong><br>
           202 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh
         </div>
 
-        <a href="https://maps.google.com/?q=Tan+Son+Nhat+Pavillon+202+Hoang+Van+Thu+Phu+Nhuan" target="_blank" class="btn-action">
+        <a href="https://maps.app.goo.gl/KGQD233m8ZgK5Z2o6" target="_blank" rel="noopener noreferrer" class="btn-action">
           <i class="fa-solid fa-location-dot"></i> Xem Chỉ Đường Google Maps
         </a>
+
+        <!-- Bản đồ xem trước Google Maps -->
+        <div class="map-preview-wrapper">
+          <iframe 
+            src="https://maps.google.com/maps?q=Trung+T%C3%A2m+H%E1%BB%99i+Ngh%E1%BB%8B+%26+Ti%E1%BB%87c+C%C6%B0%E1%BB%9Bi+Pavillon+T%C3%A2n+S%C6%A1n+Nh%E1%BA%A5t&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Bản đồ chỉ đường Pavillon Tân Sơn Nhất">
+          </iframe>
+          <a href="https://maps.app.goo.gl/KGQD233m8ZgK5Z2o6" target="_blank" rel="noopener noreferrer" class="map-footer-hint">
+            <i class="fa-solid fa-diamond-turn-right"></i> Nhấn để mở điều hướng Google Maps
+          </a>
+        </div>
       </div>
     </section>
 
@@ -507,7 +512,7 @@
       </div>
 
       <div class="photo-card-compact">
-        <img src="assets/HLE02097.jpg" alt="Cùng nhau trọn đời" onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800'">
+        <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE02097-20260914T032016-825a74e4fd.jpg" alt="Cùng nhau trọn đời" onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800'">
       </div>
     </section>
 
@@ -547,58 +552,54 @@
         </div>
       </div>
     </section>
-
   </div>
 
   <script>
-    // 1. Đếm ngược đến ngày cưới 14/11/2026 18:00
-    const targetDate = new Date("2026-11-14T18:00:00").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance > 0) {
-        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById("days").innerText = d < 10 ? "0" + d : d;
-        document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
-        document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
-        document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
-      }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // 2. Nhạc nền
+    // 1. Nhạc nền tự động phát (Autoplay)
     const musicBtn = document.getElementById("musicToggle");
     const audio = document.getElementById("bgMusic");
     let isPlaying = false;
 
-    musicBtn.addEventListener("click", () => {
+    function playAudio() {
+      if (isPlaying) return;
+      audio.play().then(() => {
+        isPlaying = true;
+        musicBtn.classList.add("music-spin");
+        interactionEvents.forEach(evt => {
+          window.removeEventListener(evt, playAudio, true);
+        });
+      }).catch(() => {
+        // Trình duyệt chặn autoplay ban đầu khi chưa có tương tác
+      });
+    }
+
+    // Thử phát ngay khi tải trang
+    playAudio();
+    window.addEventListener("DOMContentLoaded", playAudio);
+    window.addEventListener("load", playAudio);
+
+    // Phát ngay khi khách chạm, cuộn trang hoặc nhấn bất kỳ đâu
+    const interactionEvents = ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'];
+    interactionEvents.forEach(evt => {
+      window.addEventListener(evt, playAudio, { capture: true, passive: true });
+    });
+
+    // Nút bấm bật/tắt nhạc thủ công
+    musicBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       if (isPlaying) {
         audio.pause();
         musicBtn.classList.remove("music-spin");
+        isPlaying = false;
       } else {
-        audio.play().catch(e => console.log(e));
-        musicBtn.classList.add("music-spin");
-      }
-      isPlaying = !isPlaying;
-    });
-
-    document.body.addEventListener('click', function initPlay() {
-      if (!isPlaying) {
         audio.play().then(() => {
           isPlaying = true;
           musicBtn.classList.add("music-spin");
-        }).catch(() => {});
+        }).catch(err => console.log(err));
       }
-    }, { once: true });
+    });
 
-    // 3. Form RSVP
+    // 2. Form RSVP
     function handleRSVP(e) {
       e.preventDefault();
       document.getElementById("rsvpAlert").style.display = "block";
