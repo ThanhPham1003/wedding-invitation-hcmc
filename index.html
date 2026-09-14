@@ -475,8 +475,318 @@
       justify-content: center;
       gap: 7px;
     }
-    .calendar-note i {
+    /* Hộp quà mừng & Phong bì */
+    .gift-box-section {
+      background-color: var(--bg-cream);
+      padding: 45px 22px 50px;
+      text-align: center;
+      position: relative;
+    }
+    .gift-envelope-wrap {
+      margin: 24px auto 16px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .gift-envelope-wrap:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+    .envelope-svg {
+      width: 290px;
+      max-width: 88vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 12px 26px rgba(43, 71, 54, 0.12));
+      transition: filter 0.3s ease;
+    }
+    .gift-envelope-wrap:hover .envelope-svg {
+      filter: drop-shadow(0 16px 32px rgba(196, 157, 98, 0.3));
+    }
+    .envelope-btn-wrap {
+      margin-top: 14px;
+    }
+    .btn-open-gift {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary-moss) 0%, #3a5c47 100%);
+      color: #ffffff;
+      padding: 13px 36px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 13.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 1.5px solid rgba(196, 157, 98, 0.7);
+      box-shadow: 0 6px 20px rgba(43, 71, 54, 0.28);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-open-gift:hover {
+      background: linear-gradient(135deg, #355742 0%, var(--primary-moss) 100%);
+      border-color: var(--gold-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(43, 71, 54, 0.38);
+    }
+    .btn-open-gift i {
       color: var(--gold-accent);
+      font-size: 15px;
+      transition: transform 0.3s ease;
+    }
+    .btn-open-gift:hover i {
+      transform: scale(1.15);
+    }
+
+    /* Modal Hộp quà mừng */
+    .gift-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 32, 25, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .gift-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .gift-modal-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(196, 157, 98, 0.35);
+      transform: scale(0.92) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .gift-modal-overlay.active .gift-modal-card {
+      transform: scale(1) translateY(0);
+    }
+    .gift-modal-header {
+      background: linear-gradient(135deg, #e3c490 0%, #c49d62 50%, #ad8548 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .gift-modal-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 0;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    }
+    .gift-modal-close {
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .gift-modal-close:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .gift-modal-body {
+      padding: 22px 20px 20px;
+      text-align: center;
+    }
+    .gift-recipient-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--primary-moss);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .gift-recipient-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .gift-qr-wrapper {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 14px;
+      display: inline-block;
+      border: 1.5px solid rgba(196, 157, 98, 0.35);
+      box-shadow: 0 4px 16px rgba(43, 71, 54, 0.08);
+      margin-bottom: 14px;
+    }
+    .gift-qr-img {
+      width: 200px;
+      height: 200px;
+      display: block;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .gift-info-card {
+      background: #fbf9f4;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .gift-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px dashed rgba(229, 223, 211, 0.8);
+    }
+    .gift-info-row:last-child {
+      border-bottom: none;
+    }
+    .gift-info-label {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .gift-info-val {
+      font-weight: 600;
+      color: var(--primary-moss);
+      text-align: right;
+    }
+    .gift-info-val.stk-highlight {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      color: var(--gold-accent);
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+    .gift-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-copy-stk {
+      width: 100%;
+      padding: 11px 16px;
+      background: var(--primary-moss);
+      color: #ffffff;
+      border: 1px solid var(--primary-moss);
+      border-radius: 25px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(43, 71, 54, 0.2);
+    }
+    .btn-copy-stk:hover {
+      background: var(--secondary-green);
+    }
+    .btn-copy-stk.copied {
+      background: #27ae60;
+      border-color: #27ae60;
+    }
+    .btn-download-qr {
+      width: 100%;
+      padding: 9px 16px;
+      background: #ffffff;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      font-size: 12.5px;
+      font-weight: 500;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-download-qr:hover {
+      background: #fbf9f4;
+      color: var(--primary-moss);
+      border-color: var(--gold-accent);
+    }
+    .gift-modal-footer-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 14px;
+    }
+
+    /* Wedding Card Bottom Footer */
+    .wedding-footer {
+      padding: 35px 20px 45px;
+      text-align: center;
+      background: #f6f3eb;
+      border-top: 1px solid var(--border-color);
+    }
+    .footer-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .footer-heart {
+      color: var(--gold-accent);
+      font-size: 16px;
+      animation: heartBeat 2s infinite ease-in-out;
+    }
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+    .footer-gratitude {
+      font-size: 13.5px;
+      color: var(--text-dark);
+      font-weight: 500;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .footer-couple {
+      font-family: 'Alex Brush', cursive;
+      font-size: 32px;
+      color: var(--primary-moss);
+      margin-bottom: 4px;
+    }
+    .footer-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: var(--gold-accent);
+      font-weight: 600;
     }
   </style>
 </head>
@@ -624,10 +934,6 @@
           202 Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh
         </div>
 
-        <a href="https://maps.app.goo.gl/KGQD233m8ZgK5Z2o6" target="_blank" rel="noopener noreferrer" class="btn-action">
-          <i class="fa-solid fa-location-dot"></i> Xem Chỉ Đường Google Maps
-        </a>
-
         <!-- Bản đồ xem trước Google Maps -->
         <div class="map-preview-wrapper">
           <iframe 
@@ -722,6 +1028,143 @@
         </div>
       </div>
     </section>
+
+    <!-- Hộp Quà Mừng -->
+    <section class="gift-box-section" id="hopQuaMung">
+      <div class="section-heading">HỘP QUÀ MỪNG</div>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+        Sự hiện diện và lời chúc phúc của quý khách là món quà ý nghĩa nhất dành cho gia đình chúng tôi!
+      </p>
+
+      <!-- Phong bì mừng cưới đặt ở chính giữa -->
+      <div class="gift-envelope-wrap" onclick="openGiftModal()" title="Nhấn để mở hộp quà mừng">
+        <svg class="envelope-svg" viewBox="0 0 320 205" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Phong bì mừng cưới">
+          <defs>
+            <!-- Màu phong bì trắng ngà / ivory sang trọng, không bị vàng kem -->
+            <linearGradient id="envGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="55%" stop-color="#fdfcf9" />
+              <stop offset="100%" stop-color="#f3ede3" />
+            </linearGradient>
+            <linearGradient id="flapGradLight" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="65%" stop-color="#fbf9f5" />
+              <stop offset="100%" stop-color="#eae2d4" />
+            </linearGradient>
+            <linearGradient id="goldFoil" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#eed8ad" />
+              <stop offset="50%" stop-color="#c49d62" />
+              <stop offset="100%" stop-color="#997437" />
+            </linearGradient>
+            <filter id="envShadow" x="-10%" y="-10%" width="125%" height="125%">
+              <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#2b4736" flood-opacity="0.10" />
+            </filter>
+            <filter id="flapShadow" x="-10%" y="-10%" width="120%" height="130%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#8a7860" flood-opacity="0.20" />
+            </filter>
+            <filter id="logoShadow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="1.2" stdDeviation="1.2" flood-color="#735626" flood-opacity="0.28" />
+            </filter>
+          </defs>
+
+          <!-- Thân phong bì ngang tông trắng ngà nhạt sang trọng -->
+          <rect x="10" y="10" width="300" height="185" rx="12" fill="url(#envGradLight)" filter="url(#envShadow)" />
+
+          <!-- Khung viền chỉ vàng kim tinh tế -->
+          <rect x="16" y="16" width="288" height="173" rx="9" stroke="url(#goldFoil)" stroke-width="0.9" fill="none" opacity="0.7" />
+          <rect x="19" y="19" width="282" height="167" rx="7" stroke="url(#goldFoil)" stroke-width="0.45" fill="none" opacity="0.35" />
+
+          <!-- Nếp gấp đáy nắp phong bì -->
+          <path d="M 10 195 L 160 118 L 310 195" stroke="url(#goldFoil)" stroke-width="0.75" opacity="0.25" fill="none" />
+
+          <!-- Nắp gập tam giác của phong bì -->
+          <path d="M 10 10 L 160 114 L 310 10 Z" fill="url(#flapGradLight)" filter="url(#flapShadow)" />
+          <path d="M 10 10 L 160 114 L 310 10" stroke="url(#goldFoil)" stroke-width="1.2" opacity="0.8" fill="none" />
+
+          <!-- Logo cưới X|T nằm lên trên nắp phong bì (giống hình mẫu) -->
+          <g>
+            <!-- Hình thoi (Diamond) -->
+            <polygon points="160,45 183,68 160,91 137,68" fill="none" stroke="#c49d62" stroke-width="1.3" stroke-linejoin="round" />
+            <!-- Hình tròn bao quanh (r=20) -->
+            <circle cx="160" cy="68" r="20" fill="none" stroke="#c49d62" stroke-width="1.3" />
+            <!-- Vạch đứng ngăn cách | (rút ngắn lại cho hài hòa) -->
+            <line x1="160" y1="56.5" x2="160" y2="79.5" stroke="#c49d62" stroke-width="1.3" stroke-linecap="round" />
+            <!-- Chữ X và T -->
+            <text x="152.5" y="68.5" font-family="'Cormorant Garamond', serif" font-size="11" font-weight="600" fill="#c49d62" text-anchor="middle" dominant-baseline="central">X</text>
+            <text x="167.5" y="68.5" font-family="'Cormorant Garamond', serif" font-size="11" font-weight="600" fill="#c49d62" text-anchor="middle" dominant-baseline="central">T</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Nút Nhấn để mở -->
+      <div class="envelope-btn-wrap">
+        <button type="button" class="btn-open-gift" onclick="openGiftModal()" id="btnOpenGift">
+          <i class="fa-solid fa-envelope-open"></i> Nhấn để mở
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer Lời Cảm Ơn Cuối Thiệp -->
+    <footer class="wedding-footer">
+      <div class="footer-divider">
+        <span class="footer-heart"><i class="fa-solid fa-heart"></i></span>
+      </div>
+      <p class="footer-gratitude">Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!</p>
+      <div class="footer-couple">Thanh Xuân &amp; Chí Thành</div>
+      <div class="footer-date">14 . 11 . 2026</div>
+    </footer>
+  </div>
+
+  <!-- Modal Hộp Quà Mừng QR -->
+  <div class="gift-modal-overlay" id="giftModal" onclick="closeGiftModalOnBackdrop(event)">
+    <div class="gift-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalGiftTitle">
+      <div class="gift-modal-header">
+        <h3 id="modalGiftTitle">HỘP QUÀ MỪNG</h3>
+        <button type="button" class="gift-modal-close" onclick="closeGiftModal(event)" aria-label="Đóng">&times;</button>
+      </div>
+      <div class="gift-modal-body">
+        <span class="gift-recipient-sub">Mừng Cưới Đến</span>
+        <div class="gift-recipient-title">Cô Dâu - Nguyễn Thị Thanh Xuân</div>
+
+        <div class="gift-qr-wrapper">
+          <img 
+            src="assets/qr-hsbc.png" 
+            alt="Mã QR Chuyển Khoản Mừng Cưới" 
+            class="gift-qr-img" 
+            id="giftQrImage" 
+            onerror="this.onerror=null; this.src='https://img.vietqr.io/image/HSBC-123456-qr_only.png?accountName=NGUYEN%20THI%20THANH%20XUAN';"
+          />
+        </div>
+
+        <div class="gift-info-card">
+          <div class="gift-info-row">
+            <span class="gift-info-label">Ngân hàng:</span>
+            <span class="gift-info-val">HSBC (Việt Nam)</span>
+          </div>
+          <div class="gift-info-row">
+            <span class="gift-info-label">Số tài khoản:</span>
+            <span class="gift-info-val stk-highlight">123456</span>
+          </div>
+          <div class="gift-info-row">
+            <span class="gift-info-label">Chủ tài khoản:</span>
+            <span class="gift-info-val">Nguyễn Thị Thanh Xuân</span>
+          </div>
+        </div>
+
+        <div class="gift-actions">
+          <button type="button" class="btn-copy-stk" onclick="copySTK(this)">
+            <i class="fa-regular fa-copy"></i> Sao chép số tài khoản
+          </button>
+          <a href="assets/qr-hsbc.png" download="QR_MungCuoi_ThanhXuan.png" class="btn-download-qr" target="_blank">
+            <i class="fa-solid fa-arrow-down-to-bracket"></i> Lưu ảnh QR
+          </a>
+        </div>
+
+        <div class="gift-modal-footer-note">
+          Gia đình xin gửi lời cảm ơn chân thành nhất đến tình cảm của quý khách!
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -775,6 +1218,75 @@
       document.getElementById("rsvpAlert").style.display = "block";
       document.getElementById("rsvpForm").reset();
     }
+
+    // 3. Xử lý Hộp quà mừng Modal & Sao chép STK
+    function openGiftModal() {
+      const modal = document.getElementById("giftModal");
+      if (modal) {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeGiftModal(e) {
+      if (e) e.stopPropagation();
+      const modal = document.getElementById("giftModal");
+      if (modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+
+    function closeGiftModalOnBackdrop(e) {
+      if (e.target.id === "giftModal") {
+        closeGiftModal(e);
+      }
+    }
+
+    function copySTK(btn) {
+      const stk = "123456";
+      const originalHtml = btn.innerHTML;
+
+      function onCopied() {
+        btn.classList.add("copied");
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Đã sao chép 123456!';
+        setTimeout(() => {
+          btn.classList.remove("copied");
+          btn.innerHTML = originalHtml;
+        }, 2200);
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(stk).then(onCopied).catch(() => {
+          fallbackCopyText(stk, onCopied);
+        });
+      } else {
+        fallbackCopyText(stk, onCopied);
+      }
+    }
+
+    function fallbackCopyText(text, callback) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        if (callback) callback();
+      } catch (err) {
+        console.error('Fallback copy failed', err);
+      }
+      document.body.removeChild(textArea);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeGiftModal();
+      }
+    });
   </script>
 </body>
 </html>
