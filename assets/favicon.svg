@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf3d8" />
+      <stop offset="50%" stop-color="#c49d62" />
+      <stop offset="100%" stop-color="#997437" />
+    </linearGradient>
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#345440" />
+      <stop offset="100%" stop-color="#1f3427" />
+    </linearGradient>
+  </defs>
+
+  <!-- Nền tròn màu xanh rêu sang trọng -->
+  <circle cx="32" cy="32" r="31" fill="url(#favBg)" />
+  <circle cx="32" cy="32" r="29" fill="none" stroke="url(#favGold)" stroke-width="1.6" />
+
+  <!-- Khung thoi (Diamond) -->
+  <polygon points="32,8 55,32 32,56 9,32" fill="none" stroke="url(#favGold)" stroke-width="1.8" stroke-linejoin="round" />
+
+  <!-- Vòng tròn lồng (Circle) -->
+  <circle cx="32" cy="32" r="17" fill="none" stroke="url(#favGold)" stroke-width="1.8" />
+
+  <!-- Vạch đứng chia đôi -->
+  <line x1="32" y1="18" x2="32" y2="46" stroke="url(#favGold)" stroke-width="1.8" stroke-linecap="round" />
+
+  <!-- Chữ X và T font serif thanh lịch -->
+  <text x="23.5" y="32.5" font-family="'Lora', 'Georgia', serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle" dominant-baseline="central">X</text>
+  <text x="40.5" y="32.5" font-family="'Lora', 'Georgia', serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle" dominant-baseline="central">T</text>
+</svg>
