@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Cưới | Thanh Xuân & Chí Thành</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-cream: #fbf9f4;
+      --card-bg: #ffffff;
+      --primary-moss: #2b4736;
+      --secondary-green: #446850;
+      --gold-accent: #c49d62;
+      --text-dark: #2a2a2a;
+      --text-muted: #666666;
+      --border-color: #e5dfd3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #eee9df;
+      color: var(--text-dark);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wedding-wrapper {
+      width: 100%;
+      max-width: 500px;
+      background-color: var(--bg-cream);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+      position: relative;
+      overflow: hidden;
+      border-left: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+    }
+
+    /* Nút bật/tắt nhạc nền */
+    .music-player {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      cursor: pointer;
+      color: var(--primary-moss);
+      font-size: 18px;
+    }
+    .music-spin {
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Section Styling */
+    section {
+      padding: 40px 22px;
+      text-align: center;
+      position: relative;
+    }
+
+    .monogram {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .monogram-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    h1.couple-names {
+      font-family: 'Alex Brush', cursive;
+      font-size: 46px;
+      color: var(--primary-moss);
+      margin: 8px 0;
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    .sub-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--primary-moss);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .section-heading::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 1.5px;
+      background: var(--gold-accent);
+      margin: 8px auto 0;
+    }
+
+    /* Ảnh 1: Khung vòm hoa đầu trang */
+    .photo-arch {
+      width: 100%;
+      height: 420px;
+      border-radius: 220px 220px 10px 10px;
+      overflow: hidden;
+      margin: 15px 0;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border: 3px solid #ffffff;
+      background-color: #fff;
+    }
+    .photo-arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Ảnh 2: Khung thiệp phần lời mời */
+    .photo-frame {
+      width: 100%;
+      height: 340px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border: 3px solid #fff;
+      margin: 18px 0;
+      background-color: #fff;
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Ảnh 3: Thu nhỏ khung và lấy từ trên đỉnh để không bị mất đầu */
+    .photo-card-compact {
+      width: 82%;
+      max-width: 320px;
+      height: 380px;
+      margin: 25px auto 10px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border: 3px solid #fff;
+      background-color: #fff;
+    }
+    .photo-card-compact img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    /* Google Map Preview */
+    .map-preview-wrapper {
+      margin-top: 14px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      background-color: #fff;
+    }
+    .map-preview-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 250px;
+      border: 0;
+    }
+    .map-footer-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 12px;
+      background: #fdfbf7;
+      border-top: 1px solid var(--border-color);
+      font-size: 12px;
+      color: var(--primary-moss);
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .map-footer-hint:hover {
+      background: #f5eedf;
+      color: var(--secondary-green);
+    }
+
+    /* Card Lời mời & Gia đình */
+    .invitation-card {
+      background: #ffffff;
+      padding: 28px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    }
+    .parents-grid {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+      text-align: center;
+      gap: 10px;
+    }
+    .parent-column {
+      flex: 1;
+    }
+    .parent-column h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--gold-accent);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .parent-column p {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    .venue-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--primary-moss);
+      letter-spacing: 1.5px;
+      margin-top: 22px;
+      text-transform: uppercase;
+    }
+    .venue-date {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--gold-accent);
+      margin: 6px 0;
+    }
+    .venue-address {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Agenda Timeline */
+    .timeline {
+      position: relative;
+      margin: 25px auto 10px;
+      padding-left: 15px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      bottom: 15px;
+      left: 33px;
+      width: 1.5px;
+      background: var(--gold-accent);
+    }
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 26px;
+      position: relative;
+      text-align: left;
+    }
+    .timeline-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-cream);
+      border: 1.5px solid var(--gold-accent);
+      color: var(--primary-moss);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .timeline-content {
+      padding-left: 20px;
+    }
+    .timeline-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary-moss);
+    }
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Buttons */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--primary-moss);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(43,71,54,0.25);
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      margin-top: 15px;
+    }
+    .btn-action:hover {
+      background-color: var(--secondary-green);
+    }
+
+    /* Lời chúc & RSVP */
+    .wishes-box {
+      background: #fff;
+      padding: 25px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: var(--primary-moss);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+    /* Khối Lịch Ngày Cưới (Save The Date Calendar) */
+    .calendar-container {
+      max-width: 360px;
+      margin: 25px auto 10px;
+      background: #ffffff;
+      border: 1px solid rgba(196, 157, 98, 0.4);
+      border-radius: 16px;
+      padding: 24px 20px 20px;
+      box-shadow: 0 6px 22px rgba(43, 71, 54, 0.05);
+      position: relative;
+    }
+    .calendar-sub {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .calendar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-moss);
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      padding: 10px 0;
+      border-top: 1px solid rgba(196, 157, 98, 0.3);
+      border-bottom: 1.5px solid var(--gold-accent);
+    }
+    .calendar-weekdays span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-moss);
+      text-align: center;
+    }
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      row-gap: 8px;
+      margin-top: 14px;
+    }
+    .cal-day {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      font-feature-settings: "lnum" 1, "tnum" 1;
+      color: var(--text-dark);
+      position: relative;
+    }
+    .cal-day.empty {
+      visibility: hidden;
+    }
+    .cal-heart-day {
+      position: relative;
+    }
+    .cal-heart-day .heart-icon {
+      position: absolute;
+      width: 35px;
+      height: 33px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: drop-shadow(0 2px 5px rgba(196, 157, 98, 0.35));
+    }
+    .cal-heart-day .heart-num {
+      position: relative;
+      z-index: 2;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+      margin-top: -1px;
+    }
+    .calendar-note {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+    /* Hộp quà mừng & Phong bì */
+    .gift-box-section {
+      background-color: var(--bg-cream);
+      padding: 45px 22px 50px;
+      text-align: center;
+      position: relative;
+    }
+    .gift-envelope-wrap {
+      margin: 24px auto 16px;
+      display: inline-block;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .gift-envelope-wrap:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+    .envelope-svg {
+      width: 290px;
+      max-width: 88vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 12px 26px rgba(43, 71, 54, 0.12));
+      transition: filter 0.3s ease;
+    }
+    .gift-envelope-wrap:hover .envelope-svg {
+      filter: drop-shadow(0 16px 32px rgba(196, 157, 98, 0.3));
+    }
+    .envelope-btn-wrap {
+      margin-top: 14px;
+    }
+    .btn-open-gift {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--primary-moss) 0%, #3a5c47 100%);
+      color: #ffffff;
+      padding: 13px 36px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 13.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 1.5px solid rgba(196, 157, 98, 0.7);
+      box-shadow: 0 6px 20px rgba(43, 71, 54, 0.28);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-open-gift:hover {
+      background: linear-gradient(135deg, #355742 0%, var(--primary-moss) 100%);
+      border-color: var(--gold-accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(43, 71, 54, 0.38);
+    }
+    .btn-open-gift i {
+      color: var(--gold-accent);
+      font-size: 15px;
+      transition: transform 0.3s ease;
+    }
+    .btn-open-gift:hover i {
+      transform: scale(1.15);
+    }
+
+    /* Modal Hộp quà mừng */
+    .gift-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 32, 25, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .gift-modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .gift-modal-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(196, 157, 98, 0.35);
+      transform: scale(0.92) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .gift-modal-overlay.active .gift-modal-card {
+      transform: scale(1) translateY(0);
+    }
+    .gift-modal-header {
+      background: linear-gradient(135deg, #e3c490 0%, #c49d62 50%, #ad8548 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    .gift-modal-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 0;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    }
+    .gift-modal-close {
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      border-radius: 50%;
+      color: #ffffff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .gift-modal-close:hover {
+      background: rgba(255, 255, 255, 0.4);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .gift-modal-body {
+      padding: 22px 20px 20px;
+      text-align: center;
+    }
+    .gift-recipient-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--primary-moss);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .gift-recipient-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .gift-qr-wrapper {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 14px;
+      display: inline-block;
+      border: 1.5px solid rgba(196, 157, 98, 0.35);
+      box-shadow: 0 4px 16px rgba(43, 71, 54, 0.08);
+      margin-bottom: 14px;
+    }
+    .gift-qr-img {
+      width: 200px;
+      height: 200px;
+      display: block;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .gift-info-card {
+      background: #fbf9f4;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .gift-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px dashed rgba(229, 223, 211, 0.8);
+    }
+    .gift-info-row:last-child {
+      border-bottom: none;
+    }
+    .gift-info-label {
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+    .gift-info-val {
+      font-weight: 600;
+      color: var(--primary-moss);
+      text-align: right;
+    }
+    .gift-info-val.stk-highlight {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      color: var(--gold-accent);
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+    .gift-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .btn-copy-stk {
+      width: 100%;
+      padding: 11px 16px;
+      background: var(--primary-moss);
+      color: #ffffff;
+      border: 1px solid var(--primary-moss);
+      border-radius: 25px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(43, 71, 54, 0.2);
+    }
+    .btn-copy-stk:hover {
+      background: var(--secondary-green);
+    }
+    .btn-copy-stk.copied {
+      background: #27ae60;
+      border-color: #27ae60;
+    }
+    .btn-download-qr {
+      width: 100%;
+      padding: 9px 16px;
+      background: #ffffff;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-radius: 25px;
+      font-size: 12.5px;
+      font-weight: 500;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-download-qr:hover {
+      background: #fbf9f4;
+      color: var(--primary-moss);
+      border-color: var(--gold-accent);
+    }
+    .gift-modal-footer-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 14px;
+    }
+
+    /* Wedding Card Bottom Footer */
+    .wedding-footer {
+      padding: 35px 20px 45px;
+      text-align: center;
+      background: #f6f3eb;
+      border-top: 1px solid var(--border-color);
+    }
+    .footer-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .footer-heart {
+      color: var(--gold-accent);
+      font-size: 16px;
+      animation: heartBeat 2s infinite ease-in-out;
+    }
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+    }
+    .footer-gratitude {
+      font-size: 13.5px;
+      color: var(--text-dark);
+      font-weight: 500;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .footer-couple {
+      font-family: 'Alex Brush', cursive;
+      font-size: 32px;
+      color: var(--primary-moss);
+      margin-bottom: 4px;
+    }
+    .footer-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: var(--gold-accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="music-player" id="musicToggle" title="Bật/Tắt nhạc">
+    <i class="fa-solid fa-music"></i>
+  </div>
+  <audio id="bgMusic" loop preload="auto" autoplay playsinline>
+    <source src="assets/nhac-cuoi.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="wedding-wrapper">
+
+    <section>
+      <div class="monogram">
+        <svg viewBox="0 0 100 100" class="monogram-svg" aria-label="X|T Monogram">
+          <!-- Hình thoi (Diamond) -->
+          <polygon points="50,6 94,50 50,94 6,50" fill="none" stroke="var(--gold-accent)" stroke-width="1.3" stroke-linejoin="round" />
+          <!-- Hình tròn ở giữa (Circle) -->
+          <circle cx="50" cy="50" r="35.5" fill="none" stroke="var(--gold-accent)" stroke-width="1.3" />
+          <!-- Vạch đứng ngăn cách -->
+          <line x1="50" y1="33" x2="50" y2="67" stroke="var(--gold-accent)" stroke-width="1" />
+          <!-- Chữ X và T -->
+          <text x="35" y="50" font-family="'Cormorant Garamond', serif" font-size="20" font-weight="600" fill="var(--gold-accent)" text-anchor="middle" dominant-baseline="central">X</text>
+          <text x="65" y="50" font-family="'Cormorant Garamond', serif" font-size="20" font-weight="600" fill="var(--gold-accent)" text-anchor="middle" dominant-baseline="central">T</text>
+        </svg>
+      </div>
+      <h1 class="couple-names">Thanh Xuân<br>& Chí Thành</h1>
+      <div class="sub-title">HÔN LỄ</div>
+
+      <div class="photo-arch">
+        <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE01617-20260914T031954-c094db6cc0.jpg" alt="Thanh Xuân & Chí Thành" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=800'">
+      </div>
+
+      <p style="font-style: italic; font-size: 13.5px; color: var(--text-muted); margin-top: 15px; margin-bottom: 5px;">
+        "Tình yêu không phải là nhìn về nhau, mà là cùng nhau nhìn về một hướng."
+      </p>
+
+      <!-- Khối Lịch Ngày Cưới (Save The Date) -->
+      <div class="calendar-container">
+        <div class="calendar-sub">SAVE THE DATE</div>
+        <div class="calendar-title">Tháng 11 / 2026</div>
+
+        <div class="calendar-weekdays">
+          <span>T2</span>
+          <span>T3</span>
+          <span>T4</span>
+          <span>T5</span>
+          <span>T6</span>
+          <span>T7</span>
+          <span>CN</span>
+        </div>
+
+        <div class="calendar-days">
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day">1</div>
+
+          <div class="cal-day">2</div>
+          <div class="cal-day">3</div>
+          <div class="cal-day">4</div>
+          <div class="cal-day">5</div>
+          <div class="cal-day">6</div>
+          <div class="cal-day">7</div>
+          <div class="cal-day">8</div>
+
+          <div class="cal-day">9</div>
+          <div class="cal-day">10</div>
+          <div class="cal-day">11</div>
+          <div class="cal-day">12</div>
+          <div class="cal-day">13</div>
+          <div class="cal-day cal-heart-day" title="Ngày cưới: 14.11.2026">
+            <svg class="heart-icon" viewBox="0 0 34 32" aria-hidden="true">
+              <path d="M17 29.5 C17 29.5 2.5 20.5 2.5 11 C2.5 5.8 6.5 2 11.5 2 C14.6 2 16.2 3.8 17 4.7 C17.8 3.8 19.4 2 22.5 2 C27.5 2 31.5 5.8 31.5 11 C31.5 20.5 17 29.5 17 29.5 Z" fill="var(--gold-accent)" />
+            </svg>
+            <span class="heart-num">14</span>
+          </div>
+          <div class="cal-day">15</div>
+
+          <div class="cal-day">16</div>
+          <div class="cal-day">17</div>
+          <div class="cal-day">18</div>
+          <div class="cal-day">19</div>
+          <div class="cal-day">20</div>
+          <div class="cal-day">21</div>
+          <div class="cal-day">22</div>
+
+          <div class="cal-day">23</div>
+          <div class="cal-day">24</div>
+          <div class="cal-day">25</div>
+          <div class="cal-day">26</div>
+          <div class="cal-day">27</div>
+          <div class="cal-day">28</div>
+          <div class="cal-day">29</div>
+
+          <div class="cal-day">30</div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+          <div class="cal-day empty"></div>
+        </div>
+
+        <div class="calendar-note">
+          <i class="fa-solid fa-champagne-glasses"></i>
+          <span>Thứ Bảy, ngày 14 tháng 11 năm 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="background-color: #f6f3eb;">
+      <div class="section-heading">TRÂN TRỌNG KÍNH MỜI</div>
+
+      <div class="invitation-card">
+        <div class="parents-grid">
+          <div class="parent-column">
+            <h4>Nhà Gái</h4>
+            <p><strong>ÔNG BÀ</strong><br>NGUYỄN VĂN QUYỀN<br>&<br>NGUYỄN THỊ THANH HƯƠNG<br><span style="font-size: 11px; color:#777;">Phường An Nhơn, TP.HCM</span></p>
+          </div>
+          <div class="parent-column">
+            <h4>Nhà Trai</h4>
+            <p><strong>ÔNG BÀ</strong><br>PHẠM VIẾT YÊN<br>&<br>NGUYỄN THỊ PHƯƠNG<br><span style="font-size: 11px; color:#777;">Xã Đắk Mil, Lâm Đồng</span></p>
+          </div>
+        </div>
+
+        <div class="photo-frame">
+          <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE01037-20260914T031451-466ccff5e5.jpg" alt="Khoảnh khắc hạnh phúc" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800'">
+        </div>
+
+        <p style="font-size: 13.5px; margin-top: 15px; color: var(--text-dark);">
+          Kính mời Quý khách đến chung vui cùng gia đình chúng tôi tại buổi tiệc thành hôn:
+        </p>
+
+        <div class="venue-title">TÂN SƠN NHẤT PAVILLON</div>
+        <div class="venue-date">Thứ Bảy, 14 . 11 . 2026</div>
+        <div style="font-size: 12.5px; color: var(--gold-accent); margin-bottom: 8px;">(Nhằm ngày 06 tháng 10 năm Bính Ngọ)</div>
+        <div class="venue-address">
+          <strong>Sảnh Topaz - Tầng 3</strong><br>
+          202 Hoàng Văn Thụ, Phường 9, Quận Đức Nhuận, TP. Hồ Chí Minh
+        </div>
+
+        <!-- Bản đồ xem trước Google Maps -->
+        <div class="map-preview-wrapper">
+          <iframe 
+            src="https://maps.google.com/maps?q=Trung+T%C3%A2m+H%E1%BB%99i+Ngh%E1%BB%8B+%26+Ti%E1%BB%87c+C%C6%B0%E1%BB%9Bi+Pavillon+T%C3%A2n+S%C6%A1n+Nh%E1%BA%A5t&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Bản đồ chỉ đường Pavillon Tân Sơn Nhất">
+          </iframe>
+          <a href="https://maps.app.goo.gl/KGQD233m8ZgK5Z2o6" target="_blank" rel="noopener noreferrer" class="map-footer-hint">
+            <i class="fa-solid fa-diamond-turn-right"></i> Nhấn để mở điều hướng Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-heading">AGENDA TIỆC CƯỚI</div>
+      <p style="font-size: 13px; color: var(--text-muted);">14.11.2026</p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-camera"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">18:00</div>
+            <div class="timeline-desc">Đón khách & Chụp ảnh lưu niệm</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-ring"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">19:00</div>
+            <div class="timeline-desc">Nghi lễ thành hôn</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-utensils"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">19:30</div>
+            <div class="timeline-desc">Khai tiệc & Chúc rượu</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa-solid fa-music"></i></div>
+          <div class="timeline-content">
+            <div class="timeline-time">20:00</div>
+            <div class="timeline-desc">Âm nhạc & Minigame gắn kết</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-card-compact">
+        <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE02097-20260914T032016-825a74e4fd.jpg" alt="Cùng nhau trọn đời" onerror="this.src='https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800'">
+      </div>
+    </section>
+
+    <section style="background-color: #f6f3eb; padding-bottom: 50px;">
+      <div class="section-heading">GỬI LỜI CHÚC & RSVP</div>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+        Sự hiện diện của quý khách là niềm vinh hạnh to lớn đối với gia đình chúng tôi!
+      </p>
+
+      <div class="wishes-box">
+        <form id="rsvpForm" onsubmit="handleRSVP(event)">
+          <div class="form-group">
+            <label>Họ và Tên khách quý</label>
+            <input type="text" id="guestName" placeholder="Nhập tên của bạn" required />
+          </div>
+
+          <div class="form-group">
+            <label>Bạn sẽ tham dự chứ?</label>
+            <select id="guestAttend">
+              <option value="yes">Chắc chắn tôi sẽ tham dự</option>
+              <option value="maybe">Tôi đang sắp xếp thời gian</option>
+              <option value="no">Tiếc quá, tôi không thể đến dự</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Lời chúc gửi đến Cô dâu & Chú rể</label>
+            <textarea id="guestWish" rows="3" placeholder="Gửi gắm lời chúc ngọt ngào nhất..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-action" style="margin-top: 8px;">
+            <i class="fa-solid fa-paper-plane"></i> Gửi Xác Nhận & Lời Chúc
+          </button>
+        </form>
+        <div id="rsvpAlert" style="display:none; color: var(--primary-moss); font-size:13.5px; text-align:center; margin-top:12px; font-weight:600;">
+          ❤️ Cảm ơn bạn rất nhiều! Lời chúc đã được ghi nhận.
+        </div>
+      </div>
+    </section>
+
+    <!-- Hộp Quà Mừng -->
+    <section class="gift-box-section" id="hopQuaMung">
+      <div class="section-heading">HỘP QUÀ MỪNG</div>
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 20px;">
+        Sự hiện diện và lời chúc phúc của quý khách là món quà ý nghĩa nhất dành cho gia đình chúng tôi!
+      </p>
+
+      <!-- Phong bì mừng cưới đặt ở chính giữa -->
+      <div class="gift-envelope-wrap" onclick="openGiftModal()" title="Nhấn để mở hộp quà mừng">
+        <svg class="envelope-svg" viewBox="0 0 320 205" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Phong bì mừng cưới">
+          <defs>
+            <!-- Màu phong bì trắng ngà / ivory sang trọng, không bị vàng kem -->
+            <linearGradient id="envGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="55%" stop-color="#fdfcf9" />
+              <stop offset="100%" stop-color="#f3ede3" />
+            </linearGradient>
+            <linearGradient id="flapGradLight" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="65%" stop-color="#fbf9f5" />
+              <stop offset="100%" stop-color="#eae2d4" />
+            </linearGradient>
+            <linearGradient id="goldFoil" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#eed8ad" />
+              <stop offset="50%" stop-color="#c49d62" />
+              <stop offset="100%" stop-color="#997437" />
+            </linearGradient>
+            <filter id="envShadow" x="-10%" y="-10%" width="125%" height="125%">
+              <feDropShadow dx="0" dy="7" stdDeviation="7" flood-color="#2b4736" flood-opacity="0.10" />
+            </filter>
+            <filter id="flapShadow" x="-10%" y="-10%" width="120%" height="130%">
+              <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#8a7860" flood-opacity="0.20" />
+            </filter>
+            <filter id="logoShadow" x="-25%" y="-25%" width="150%" height="150%">
+              <feDropShadow dx="0" dy="1.2" stdDeviation="1.2" flood-color="#735626" flood-opacity="0.28" />
+            </filter>
+          </defs>
+
+          <!-- Thân phong bì ngang tông trắng ngà nhạt sang trọng -->
+          <rect x="10" y="10" width="300" height="185" rx="12" fill="url(#envGradLight)" filter="url(#envShadow)" />
+
+          <!-- Khung viền chỉ vàng kim tinh tế -->
+          <rect x="16" y="16" width="288" height="173" rx="9" stroke="url(#goldFoil)" stroke-width="0.9" fill="none" opacity="0.7" />
+          <rect x="19" y="19" width="282" height="167" rx="7" stroke="url(#goldFoil)" stroke-width="0.45" fill="none" opacity="0.35" />
+
+          <!-- Nếp gấp đáy nắp phong bì -->
+          <path d="M 10 195 L 160 118 L 310 195" stroke="url(#goldFoil)" stroke-width="0.75" opacity="0.25" fill="none" />
+
+          <!-- Nắp gập tam giác của phong bì -->
+          <path d="M 10 10 L 160 114 L 310 10 Z" fill="url(#flapGradLight)" filter="url(#flapShadow)" />
+          <path d="M 10 10 L 160 114 L 310 10" stroke="url(#goldFoil)" stroke-width="1.2" opacity="0.8" fill="none" />
+
+          <!-- Logo cưới X|T nằm lên trên nắp phong bì (giống hình mẫu) -->
+          <g>
+            <!-- Hình thoi (Diamond) -->
+            <polygon points="160,45 183,68 160,91 137,68" fill="none" stroke="#c49d62" stroke-width="1.3" stroke-linejoin="round" />
+            <!-- Hình tròn bao quanh (r=20) -->
+            <circle cx="160" cy="68" r="20" fill="none" stroke="#c49d62" stroke-width="1.3" />
+            <!-- Vạch đứng ngăn cách | (rút ngắn lại cho hài hòa) -->
+            <line x1="160" y1="56.5" x2="160" y2="79.5" stroke="#c49d62" stroke-width="1.3" stroke-linecap="round" />
+            <!-- Chữ X và T -->
+            <text x="152.5" y="68.5" font-family="'Cormorant Garamond', serif" font-size="11" font-weight="600" fill="#c49d62" text-anchor="middle" dominant-baseline="central">X</text>
+            <text x="167.5" y="68.5" font-family="'Cormorant Garamond', serif" font-size="11" font-weight="600" fill="#c49d62" text-anchor="middle" dominant-baseline="central">T</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Nút Nhấn để mở -->
+      <div class="envelope-btn-wrap">
+        <button type="button" class="btn-open-gift" onclick="openGiftModal()" id="btnOpenGift">
+          <i class="fa-solid fa-envelope-open"></i> Nhấn để mở
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer Lời Cảm Ơn Cuối Thiệp -->
+    <footer class="wedding-footer">
+      <div class="footer-divider">
+        <span class="footer-heart"><i class="fa-solid fa-heart"></i></span>
+      </div>
+      <p class="footer-gratitude">Sự hiện diện của quý khách là niềm vinh hạnh của gia đình chúng tôi!</p>
+      <div class="footer-couple">Thanh Xuân &amp; Chí Thành</div>
+      <div class="footer-date">14 . 11 . 2026</div>
+    </footer>
+  </div>
+
+  <!-- Modal Hộp Quà Mừng QR -->
+  <div class="gift-modal-overlay" id="giftModal" onclick="closeGiftModalOnBackdrop(event)">
+    <div class="gift-modal-card" role="dialog" aria-modal="true" aria-labelledby="modalGiftTitle">
+      <div class="gift-modal-header">
+        <h3 id="modalGiftTitle">HỘP QUÀ MỪNG</h3>
+        <button type="button" class="gift-modal-close" onclick="closeGiftModal(event)" aria-label="Đóng">&times;</button>
+      </div>
+      <div class="gift-modal-body">
+        <span class="gift-recipient-sub">Mừng Cưới Đến</span>
+        <div class="gift-recipient-title">Cô Dâu - Nguyễn Thị Thanh Xuân</div>
+
+        <div class="gift-qr-wrapper">
+          <img 
+            src="assets/qr-hsbc.png" 
+            alt="Mã QR Chuyển Khoản Mừng Cưới" 
+            class="gift-qr-img" 
+            id="giftQrImage" 
+            onerror="this.onerror=null; this.src='https://img.vietqr.io/image/bidv-1770206365-qr_only.png?accountName=NGUYEN%20THI%20THANH%20XUAN';"
+          />
+        </div>
+
+        <div class="gift-info-card">
+          <div class="gift-info-row">
+            <span class="gift-info-label">Ngân hàng:</span>
+            <span class="gift-info-val">BIDV</span>
+          </div>
+          <div class="gift-info-row">
+            <span class="gift-info-label">Số tài khoản:</span>
+            <span class="gift-info-val stk-highlight">1770206365</span>
+          </div>
+          <div class="gift-info-row">
+            <span class="gift-info-label">Chủ tài khoản:</span>
+            <span class="gift-info-val">Nguyễn Thị Thanh Xuân</span>
+          </div>
+        </div>
+
+        <div class="gift-actions">
+          <button type="button" class="btn-copy-stk" onclick="copySTK(this)">
+            <i class="fa-regular fa-copy"></i> Sao chép số tài khoản
+          </button>
+          <a href="assets/qr-hsbc.png" download="QR_MungCuoi_ThanhXuan.png" class="btn-download-qr" target="_blank">
+            <i class="fa-solid fa-arrow-down-to-bracket"></i> Lưu ảnh QR
+          </a>
+        </div>
+
+        <div class="gift-modal-footer-note">
+          Gia đình xin gửi lời cảm ơn chân thành nhất đến tình cảm của quý khách!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Nhạc nền tự động phát (Autoplay)
+    const musicBtn = document.getElementById("musicToggle");
+    const audio = document.getElementById("bgMusic");
+    let isPlaying = false;
+
+    function playAudio() {
+      if (isPlaying) return;
+      audio.play().then(() => {
+        isPlaying = true;
+        musicBtn.classList.add("music-spin");
+        interactionEvents.forEach(evt => {
+          window.removeEventListener(evt, playAudio, true);
+        });
+      }).catch(() => {
+        // Trình duyệt chặn autoplay ban đầu khi chưa có tương tác
+      });
+    }
+
+    // Thử phát ngay khi tải trang
+    playAudio();
+    window.addEventListener("DOMContentLoaded", playAudio);
+    window.addEventListener("load", playAudio);
+
+    // Phát ngay khi khách chạm, cuộn trang hoặc nhấn bất kỳ đâu
+    const interactionEvents = ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'];
+    interactionEvents.forEach(evt => {
+      window.addEventListener(evt, playAudio, { capture: true, passive: true });
+    });
+
+    // Nút bấm bật/tắt nhạc thủ công
+    musicBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (isPlaying) {
+        audio.pause();
+        musicBtn.classList.remove("music-spin");
+        isPlaying = false;
+      } else {
+        audio.play().then(() => {
+          isPlaying = true;
+          musicBtn.classList.add("music-spin");
+        }).catch(err => console.log(err));
+      }
+    });
+
+    // 2. Cấu hình gửi dữ liệu RSVP vào Google Sheet
+    // Link Sheet: https://docs.google.com/spreadsheets/d/1i3ts_XDRXNMCsbB0HQtZfj3jVSwhdYfU6xlWaH_U4_w/edit
+    const GOOGLE_SHEET_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYUo0-lbRzcW4L7t4iiJtdOfkaSWMvqiu8UOJ7Cn1ZzlHo935Gja3G8ZF-0M8GTf9x/exec";
+
+    async function handleRSVP(e) {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : "";
+      const alertBox = document.getElementById("rsvpAlert");
+
+      const nameInput = document.getElementById("guestName");
+      const attendSelect = document.getElementById("guestAttend");
+      const wishTextarea = document.getElementById("guestWish");
+
+      const name = nameInput ? nameInput.value.trim() : "";
+      const attend = attendSelect ? attendSelect.options[attendSelect.selectedIndex].text : "";
+      const wish = wishTextarea ? wishTextarea.value.trim() : "";
+
+      if (!name) return;
+
+      // Hiệu ứng đang gửi
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> ĐANG GỬI...';
+      }
+
+      try {
+        if (GOOGLE_SHEET_SCRIPT_URL) {
+          await fetch(GOOGLE_SHEET_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+            body: JSON.stringify({
+              name: name,
+              attend: attend,
+              wish: wish
+            })
+          });
+        }
+
+        // Hiển thị thông báo thành công
+        if (alertBox) {
+          alertBox.style.display = "block";
+          alertBox.style.color = "var(--primary-moss)";
+          alertBox.innerHTML = "❤️ Cảm ơn bạn rất nhiều! Lời chúc & xác nhận đã được ghi nhận.";
+          setTimeout(() => {
+            alertBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }, 100);
+        }
+        document.getElementById("rsvpForm").reset();
+      } catch (err) {
+        console.error("Lỗi gửi RSVP:", err);
+        if (alertBox) {
+          alertBox.style.display = "block";
+          alertBox.style.color = "#c0392b";
+          alertBox.innerHTML = "⚠️ Có lỗi xảy ra khi gửi. Vui lòng thử lại sau!";
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        }
+      }
+    }
+
+    // 3. Xử lý Hộp quà mừng Modal & Sao chép STK
+    function openGiftModal() {
+      const modal = document.getElementById("giftModal");
+      if (modal) {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+    }
+
+    function closeGiftModal(e) {
+      if (e) e.stopPropagation();
+      const modal = document.getElementById("giftModal");
+      if (modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    }
+
+    function closeGiftModalOnBackdrop(e) {
+      if (e.target.id === "giftModal") {
+        closeGiftModal(e);
+      }
+    }
+
+    function copySTK(btn) {
+      const stk = "1770206365";
+      const originalHtml = btn.innerHTML;
+
+      function onCopied() {
+        btn.classList.add("copied");
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Đã sao chép 1770206365!';
+        setTimeout(() => {
+          btn.classList.remove("copied");
+          btn.innerHTML = originalHtml;
+        }, 2200);
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(stk).then(onCopied).catch(() => {
+          fallbackCopyText(stk, onCopied);
+        });
+      } else {
+        fallbackCopyText(stk, onCopied);
+      }
+    }
+
+    function fallbackCopyText(text, callback) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        if (callback) callback();
+      } catch (err) {
+        console.error('Fallback copy failed', err);
+      }
+      document.body.removeChild(textArea);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeGiftModal();
+      }
+    });
+  </script>
+</body>
+</html>
