@@ -23,12 +23,12 @@
       --bg-warm-light: #f7f5ef;
       --bg-gray-accent: #BABAAB;
       --card-bg: #ffffff;
-      --primary-moss: #000000;
+      --primary-moss: #2A2A23;
       --secondary-green: #222222;
-      --gold-accent: #000000;
-      --gold-dark: #000000;
-      --text-dark: #000000;
-      --text-muted: #000000;
+      --gold-accent: #2A2A23;
+      --gold-dark: #2A2A23;
+      --text-dark: #2A2A23;
+      --text-muted: #2A2A23;
       --border-color: #e5dfd3;
     }
 
@@ -40,7 +40,7 @@
 
     body {
       background-color: #eee9df;
-      color: #000000;
+      color: #2A2A23;
       font-family: 'Open Sans', sans-serif;
       line-height: 1.6;
       display: flex;
@@ -94,22 +94,21 @@
 
     .section-heading {
       font-family: 'Lora', serif;
-      font-size: 25px;
+      font-size: 20px;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #000000;
+      color: #2A2A23;
       margin-bottom: 22px;
       position: relative;
-      font-weight: 700;
+      font-weight: 400;
     }
-    .section-heading::after {
+    /* .section-heading::after {
       content: "";
       display: block;
       width: 40px;
       height: 1.5px;
-      background: #000000;
+      background: #2A2A23;
       margin: 8px auto 0;
-    }
+    } */
 
     /* Section 1: Hero Cover */
     .hero-section {
@@ -120,16 +119,16 @@
     .hero-the-wedding {
       font-family: 'Pinyon Script', cursive;
       font-size: 52px;
-      color: #000000;
-      line-height: 1.15;
-      margin-bottom: 12px;
+      color: #2A2A23;
+      line-height: 0.8;
+      margin-bottom: 5px;
       font-weight: 400;
     }
     .hero-wedding-of {
       font-family: 'Pinyon Script', cursive;
       font-size: 52px;
       color: var(--primary-moss);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       letter-spacing: 1px;
     }
 
@@ -138,7 +137,6 @@
       width: 100%;
       max-width: 345px;
       margin: 0 auto 16px;
-      /* margin-top: 0px; */
       filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.06));
     }
     .hero-photo-frame img {
@@ -151,8 +149,8 @@
     .hero-couple-names {
       font-family: 'Pinyon Script', cursive;
       font-size: 32px;
-      color: #000000;
-      margin-top: 15px;
+      color: #2A2A23;
+      margin-top: 30px;
       margin-bottom: 4px;
       line-height: 1.2;
       /* font-weight: 50; */
@@ -160,9 +158,9 @@
     .hero-date {
       font-family: 'Open Sans', sans-serif;
       font-size: 14px;
-      letter-spacing: 3px;
-      color: #000000;
-      font-weight: 600;
+      letter-spacing: 2px;
+      color: #2A2A23;
+      font-weight: 400;
     }
 
     /* Section 2: Trân trọng kính mời & Gia đình */
@@ -185,29 +183,28 @@
       font-size: 18px;
       color: #B28D4D;
       margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-weight: 700;
+      /* text-transform: uppercase; */
+      font-weight: 400;
     }
     .parent-column .parent-title {
-      font-family: 'Lora', serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 12px;
-      letter-spacing: 1.5px;
-      font-weight: 700;
-      color: #000000;
-      margin-bottom: 4px;
+      font-weight: 400;
+      color: #2A2A23;
+      margin-bottom: 10px;
     }
     .parent-column .parent-names {
       font-family: 'Lora', serif;
       font-size: 14px;
       line-height: 0.8;
-      color: #000000;
-      font-weight: 600;
+      color: #2A2A23;
+      font-weight: 500;
+      line-height: 14px;
     }
     .parent-column .parent-location {
       font-family: 'Open Sans', sans-serif;
       font-size: 12px;
-      color: #000000;
+      color: #2A2A23;
       margin-top: 10px;
     }
 
@@ -219,20 +216,19 @@
     }
     .lace-bg-backdrop {
       position: absolute;
-      top: -20px;
-      bottom: -20px;
-      right: -15px;
-      width: 180%;
-      height: calc(100% + 40px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      object-position: 100% 72%;
-      filter: blur(1.8px) brightness(0.96);
+      object-position: 100% 75%;
+      filter: blur(2px);
       z-index: 1;
     }
     .lace-overlay-container {
       position: relative;
       z-index: 2;
-      padding: 30px 10px 35px;
+      padding: 16px 0 20px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -240,9 +236,10 @@
     }
     .lace-card-wrapper {
       position: relative;
-      width: 100%;
-      max-width: 800px;
+      width: 106%;
+      max-width: none;
       filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.28));
+      transform: scale(1.05);
     }
     .lace-frame-img {
       width: 100%;
@@ -266,23 +263,23 @@
     .lace-couple-name {
       font-family: 'Pinyon Script', cursive;
       font-size: 44px;
-      color: #000000;
+      color: #2A2A23;
       line-height: 1.15;
       font-weight: 400;
       letter-spacing: 0;
     }
     .lace-invitation-intro {
-      font-family: 'Lora', serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 12px;
-      color: #000000;
+      color: #2A2A23;
       margin: 14px 0 10px;
       line-height: 1.6;
-      max-width: 260px;
+      max-width: 200px;
     }
     .lace-date {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 22px;
-      font-weight: 700;
+      font-family: 'Lora', serif;
+      font-size: 32px;
+      font-weight: 500;
       color: #B28D4D;
       letter-spacing: 2px;
       margin-bottom: 10px;
@@ -290,23 +287,22 @@
     .lace-venue-title {
       font-family: 'Lora', serif;
       font-size: 18px;
-      font-weight: 700;
-      color: #000000;
-      letter-spacing: 1.5px;
+      font-weight: 500;
+      color: #2A2A23;
       text-transform: uppercase;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
     .lace-venue-hall {
       font-family: 'Open Sans', sans-serif;
       font-size: 12.5px;
       font-weight: 600;
-      color: #000000;
-      margin-bottom: 6px;
+      color: #2A2A23;
+      margin-bottom: 10px;
     }
     .lace-venue-addr {
       font-family: 'Open Sans', sans-serif;
       font-size: 11.5px;
-      color: #000000;
+      color: #2A2A23;
       line-height: 1.45;
       max-width: 250px;
     }
@@ -314,7 +310,7 @@
     /* Section 4: Bản đồ */
     .map-section {
       background-color: #ffffff;
-      padding: 30px 22px 35px;
+      padding: 32px 32px 32px;
     }
     .map-preview-wrapper {
       border-radius: 12px;
@@ -368,22 +364,22 @@
       border-top: 1px solid var(--border-color);
       font-family: 'Open Sans', sans-serif;
       font-size: 12px;
-      color: #000000;
+      color: #2A2A23;
       font-weight: 500;
       text-decoration: none;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
     .map-footer-hint:hover {
       background: #f5eedf;
-      color: #000000;
+      color: #2A2A23;
     }
 
     /* Section 5: Quote & Arch Photo (#BABAAB) */
     .quote-arch-section {
       background-color: var(--bg-gray-accent); /* #BABAAB */
-      padding: 45px 20px 38px;
+      padding: 32px 32px 32px;
       text-align: center;
-      color: #000000;
+      color: #2A2A23;
       position: relative;
       overflow: hidden;
     }
@@ -394,12 +390,12 @@
     }
     .arch-photo-container {
       width: 100%;
-      max-width: 330px;
-      height: 425px;
+      max-width: 400px;
+      height: 550px;
       margin: 0 auto 20px;
-      border-radius: 165px;
+      border-radius: 200px;
       overflow: hidden;
-      border: 2.5px solid #ffffff;
+      border: 1.5px solid #ffffff;
       /* box-shadow: 0 10px 30px rgba(0,0,0,0.14); */
       background-color: #fff;
     }
@@ -424,7 +420,7 @@
       right: 12px;
     }
     .arch-quote-text {
-      font-family: 'Lora', serif;
+      font-family: 'Open Sans', sans-serif;
       font-style: italic;
       font-size: 14.5px;
       color: #F5F3EC;
@@ -435,7 +431,7 @@
       position: relative;
       z-index: 5;
       padding: 0 4px;
-      font-weight: 500;
+      font-weight: 300;
       text-shadow: none;
     }
     .quote-line {
@@ -455,19 +451,19 @@
     }
     .agenda-section .section-heading {
       font-family: 'Lora', serif;
-      color: #000000;
+      color: #2A2A23;
       margin-bottom: 6px;
-      letter-spacing: 2px;
+      font-size: 20px;
     }
     .agenda-section .section-heading::after {
       display: none;
     }
     .agenda-subtitle {
       font-family: 'Open Sans', sans-serif;
-      font-size: 14.5px;
+      font-size: 14px;
       letter-spacing: 0.5px;
-      color: #000000;
-      font-weight: 600;
+      color: #2A2A23;
+      font-weight: 400;
       margin-top: 0;
       margin-bottom: 30px;
       text-align: center;
@@ -530,17 +526,17 @@
     }
     .agenda-time {
       font-family: 'Open Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      color: #000000;
+      font-size: 14px;
+      font-weight: 600;
+      color: #2A2A23;
       line-height: 1.2;
       margin-bottom: 2px;
     }
     .agenda-desc {
       font-family: 'Open Sans', sans-serif;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #000000;
+      font-size: 14px;
+      font-weight: 400;
+      color: #475467;
       line-height: 1.35;
     }
     .agenda-icon-wrap {
@@ -550,10 +546,12 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      margin-right: 10px;
+      margin-left: 10px;
     }
     .agenda-icon-wrap img {
-      max-width: 48px;
-      max-height: 48px;
+      max-width: 70px;
+      max-height: 70px;
       object-fit: contain;
       display: block;
     }
@@ -561,7 +559,7 @@
     /* Section 7: RSVP */
     .rsvp-section {
       background-color: #ffffff;
-      padding: 40px 22px 45px;
+      padding: 32px 32px 32px;
     }
     .wishes-box {
       background: #fdfbf7;
@@ -569,7 +567,7 @@
       border-radius: 12px;
       border: 1px solid var(--border-color);
       text-align: left;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04); */
     }
     .form-group {
       margin-bottom: 14px;
@@ -577,10 +575,10 @@
     .form-group label {
       display: block;
       font-family: 'Open Sans', sans-serif;
-      font-size: 12px;
+      font-size: 14px;
       margin-bottom: 5px;
       font-weight: 600;
-      color: #000000;
+      color: #2A2A23;
     }
     .form-group input,
     .form-group textarea,
@@ -590,8 +588,8 @@
       border: 1px solid var(--border-color);
       border-radius: 6px;
       font-family: 'Open Sans', sans-serif;
-      font-size: 13px;
-      color: #000000;
+      font-size: 14px;
+      color: #2A2A23;
       outline: none;
       background: #ffffff;
     }
@@ -611,7 +609,7 @@
       text-transform: uppercase;
       font-weight: 600;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(43, 71, 54, 0.25);
+      /* box-shadow: 0 4px 15px rgba(43, 71, 54, 0.25); */
       cursor: pointer;
       border: none;
       width: 100%;
@@ -658,30 +656,31 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      background: linear-gradient(135deg, #2b4736 0%, #3a5c47 100%);
+      gap: 8px;
+      background:  #2b4736;
       color: #ffffff;
-      padding: 13px 36px;
+      padding: 12px 24px;
       border-radius: 30px;
       text-decoration: none;
       font-family: 'Open Sans', sans-serif;
-      font-size: 13.5px;
-      letter-spacing: 1.5px;
+      font-size: 13px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 600;
-      border: 1.5px solid rgba(196, 157, 98, 0.7);
-      box-shadow: 0 6px 20px rgba(43, 71, 54, 0.28);
+      /* border: 1.5px solid rgba(196, 157, 98, 0.7); */
+      /* box-shadow: 0 6px 20px rgba(43, 71, 54, 0.28); */
       cursor: pointer;
+      border: none;
       transition: all 0.3s ease;
     }
     .btn-open-gift:hover {
       background: linear-gradient(135deg, #355742 0%, #2b4736 100%);
-      border-color: #c49d62;
+      /* border-color: #c49d62; */
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(43, 71, 54, 0.38);
+      /* box-shadow: 0 8px 24px rgba(43, 71, 54, 0.38); */
     }
     .btn-open-gift i {
-      color: #c49d62;
+      color: #ffffff;
       font-size: 15px;
       transition: transform 0.3s ease;
     }
@@ -906,7 +905,7 @@
       background-color: #f7f5ef;
       padding: 40px 20px 50px;
       text-align: center;
-      border-top: 1px solid var(--border-color);
+      /* border-top: 1px solid var(--border-color); */
     }
     .ending-heart-wrap {
       width: 68px;
@@ -918,46 +917,41 @@
       display: block;
     }
     .ending-gratitude {
-      font-family: 'Lora', serif;
-      font-style: italic;
+      font-family: 'Open Sans', sans-serif;
       font-size: 14px;
-      color: #000000;
-      font-weight: 500;
+      color: #2A2A23;
+      font-weight: 400;
       line-height: 1.6;
       max-width: 330px;
-      margin: 0 auto 12px;
+      margin: 0 auto 0px;
     }
     .ending-couple-names {
       font-family: 'Pinyon Script', cursive;
       font-size: 32px;
-      color: #000000;
-      margin-top: 50px;
-      margin-bottom: 4px;
+      color: #2A2A23;
+      margin-top: 20px;
       font-weight: 400;
     }
     .ending-date {
       font-family: 'Open Sans', sans-serif;
       font-size: 14px;
       letter-spacing: 2px;
-      color: #000000;
-      font-weight: 600;
+      color: #2A2A23;
+      font-weight: 400;
       margin-bottom: 25px;
     }
     .ending-photo-wrap {
       width: 100%;
-      max-width: 340px;
+      max-width: 100%;
       border-radius: 12px;
       overflow: hidden;
-      margin: 0 auto;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border: 3px solid #ffffff;
+      margin: 32px auto 0;
+      border: 1px solid #ffffff;
       background: #ffffff;
     }
     .ending-photo-wrap img {
       width: 100%;
-      height: 420px;
-      object-fit: cover;
-      object-position: top center;
+      height: auto;
       display: block;
     }
   </style>
@@ -994,7 +988,7 @@
 
       <div class="parents-grid">
         <div class="parent-column">
-          <h4>Nhà gái</h4>
+          <h4>Nhà Gái</h4>
           <div class="parent-title">ÔNG BÀ</div>
           <div class="parent-names">
             Nguyễn Văn Quyền<br><br>Nguyễn Thị Thanh Hương
@@ -1078,7 +1072,7 @@
 
       <!-- Ảnh khung vòm Arch -->
       <div class="arch-photo-container">
-        <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE02097-20260914T032016-825a74e4fd.jpg" alt="Thanh Xuân & Chí Thành">
+        <img src="assets/HLE01799.jpg" alt="Thanh Xuân & Chí Thành">
       </div>
 
       <!-- Hai hình candal hai bên góc dưới -->
@@ -1172,7 +1166,7 @@
 
     <!-- PHẦN 7: GỬI LỜI CHÚC & RSVP -->
     <section class="rsvp-section">
-      <div class="section-heading">GỬI LỜI CHÚC & RSVP</div>
+      <div class="section-heading">GỬI LỜI CHÚC</div>
 
       <div class="wishes-box">
         <form id="rsvpForm" onsubmit="handleRSVP(event)">
@@ -1289,7 +1283,7 @@
 
       <!-- Ảnh cưới cuối trang -->
       <div class="ending-photo-wrap">
-        <img src="https://svhcstdev.blob.core.windows.net/sp-uploads/926d8250-ac5f-498e-b9ce-a57f4d6311a2/HLE02097-20260914T032016-825a74e4fd.jpg" alt="Thanh Xuân & Chí Thành tay trong tay">
+        <img src="assets/HLE02156.jpg" alt="Thanh Xuân & Chí Thành tay trong tay">
       </div>
     </footer>
 
